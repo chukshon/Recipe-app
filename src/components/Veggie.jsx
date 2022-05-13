@@ -2,6 +2,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import '@splidejs/react-splide/css'
+import { Link } from 'react-router-dom'
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([])
@@ -39,9 +40,11 @@ const Veggie = () => {
           return (
             <SplideSlide key={recipe.id}>
               <Card>
-                <p>{recipe.title}</p>
-                <img src={recipe.image} alt={recipe.title} />
-                <Gradient />
+                <Link to={`details/${recipe.id}`}>
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} alt={recipe.title} />
+                  <Gradient />
+                </Link>
               </Card>
             </SplideSlide>
           )
