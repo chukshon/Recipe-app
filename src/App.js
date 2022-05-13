@@ -1,11 +1,14 @@
+import { BrowserRouter } from 'react-router-dom'
+import Category from './components/Category'
 import Home from './page/Home'
 import Pages from './page/Pages'
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
+      <Category />
       <Pages />
-    </div>
+    </BrowserRouter>
   )
 }
 
