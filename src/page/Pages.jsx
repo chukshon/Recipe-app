@@ -2,14 +2,16 @@ import Home from './Home'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Cuisine from './Cuisine'
-import Recipe from './Recipe'
+import Searched from './Searched'
+import Details from './Details'
 
 const Pages = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/cuisine/:type' element={<Cuisine />} />
-      <Route path='/recipe/:type' element={<Recipe />} />
+      <Route path='/recipe/:type' element={<Details />} />
+      <Route path='/searched/:type' element={<Searched />} />
     </Routes>
   )
 }
