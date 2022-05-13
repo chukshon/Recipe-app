@@ -10,7 +10,7 @@ const Pages = () => {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/cuisine/:type' element={<Cuisine />} />
-      <Route path='/recipe/:id' element={<Details />} />
+      <Route path='/details/:id' element={<Details />} />
       <Route path='/searched/:type' element={<Searched />} />
     </Routes>
   )
