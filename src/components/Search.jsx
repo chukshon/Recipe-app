@@ -13,6 +13,7 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     navigate(`searched/${value}`)
+    setValue('')
   }
   return (
     <FormStyle onSubmit={handleSubmit}>
