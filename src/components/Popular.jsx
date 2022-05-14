@@ -3,23 +3,10 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import '@splidejs/react-splide/css'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../context/appContext'
 
 const Popular = () => {
-  const [popular, setPopular] = useState([])
-  const getPopular = async () => {
-    const check = localStorage.getItem('popular')
-    if (check) {
-      setPopular(JSON.parse(check))
-    } else {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-      )
-      const data = await api.json()
-      localStorage.setItem('popular', JSON.stringify(data.recipes))
-      setPopular(data.recipes)
-    }
-  }
-
+  const { popular, getPopular } = useAppContext()
   useEffect(() => {
     getPopular()
   }, [])
