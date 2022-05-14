@@ -1,2 +1,6 @@
-export const TEST = 'TEST'
 export const GET_POPULAR = 'GET_POPULAR'
+export const GET_VEGGIE = 'GET_VEGGIE'
+export const GET_CUISINE = 'GET_CUISINE'
+export const GET_DETAILS = 'GET_DETAILS'
+export const GET_SEARCHED = 'GET_SEARCHED'
+export const SET_LOADING = 'SET_LOADING'

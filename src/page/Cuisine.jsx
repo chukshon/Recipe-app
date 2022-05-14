@@ -2,20 +2,14 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useAppContext } from '../context/appContext'
 
 const Cuisine = () => {
-  const [cuisine, setCuisine] = useState([])
+  const { cuisine, getCuisine } = useAppContext()
   let params = useParams()
-  const getCuisines = async (name) => {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=9=${name}`
-    )
-    const recipes = await data.json()
-    setCuisine(recipes.results)
-  }
 
   useEffect(() => {
-    getCuisines(params.type)
+    getCuisine(params.type)
   }, [params.type])
   return (
     <Grid

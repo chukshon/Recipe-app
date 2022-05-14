@@ -3,23 +3,10 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import '@splidejs/react-splide/css'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../context/appContext'
 
 const Veggie = () => {
-  const [veggie, setVeggie] = useState([])
-  const getVeggie = async () => {
-    const check = localStorage.getItem('veggie')
-    if (check) {
-      setVeggie(JSON.parse(check))
-    } else {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
-      )
-      const data = await api.json()
-      localStorage.setItem('veggie', JSON.stringify(data.recipes))
-      setVeggie(data.recipes)
-    }
-  }
-
+  const { veggie, getVeggie } = useAppContext()
   useEffect(() => {
     getVeggie()
   }, [])

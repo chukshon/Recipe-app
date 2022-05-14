@@ -1,21 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-
+import { useAppContext } from '../context/appContext'
 const Details = () => {
-  const [details, setDetails] = useState({})
+  const { details, getDetails } = useAppContext()
   const [active, setActive] = useState('instructions')
 
   const params = useParams()
-  const getDetails = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-    )
-    const data = await api.json()
-    setDetails(data)
-  }
   useEffect(() => {
-    getDetails()
+    getDetails(params.id)
   }, [params.id])
 
   return (

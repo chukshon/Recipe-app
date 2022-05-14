@@ -1,26 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-
+import { useAppContext } from '../context/appContext'
 const Searched = () => {
-  const [searched, setSearched] = useState([])
-  const [loading, setLoading] = useState(false)
+  const { searched, getSearched, loading } = useAppContext()
   const params = useParams()
-  const getSearched = async (name) => {
-    setLoading(true)
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
-    )
-    const data = await api.json()
-    setSearched(data.results)
-    setLoading(false)
-  }
   useEffect(() => {
     getSearched(params.type)
-    console.log(params.type)
   }, [params.type])
 
-  if (searched) {
+  if (searched.length > 0) {
     return (
       <>
         {loading && <h1>Loading.....</h1>}
